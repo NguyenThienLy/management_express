@@ -1,0 +1,26 @@
+html
+	head
+		link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css")
+	body
+		nav(class="navbar navbar-expand-lg navbar-dark bg-primary")
+			a(class="navbar-brand", href="/") Coders.Tokyo
+			button(class="navbar-toggler", type="button", data-toggle="collapse", data-target="#navbarSupportedContent", aria-controls="navbarSupportedContent", aria-expanded="false", aria-label="Toggle navigation")
+				span(class="navbar-toggler-icon")
+			div(class="collapse navbar-collapse", id="navbarSupportedContent")
+				ul(class="navbar-nav mr-auto")
+					li(class="nav-item active")
+						a(class="nav-link", href="/") Home
+					li(class="nav-item")
+						a(class="nav-link", href="../users") Users
+					li(class="nav-item")
+						a(class="nav-link", href="../products") Products
+					li(class="nav-item")
+						a(class="nav-link", href="../cart", style="display: inline-block") Cart
+						span(style="color: #FFF")= cartNumber
+
+
+			if(user)
+				p= user.name
+
+		.container.pt-5
+			block content

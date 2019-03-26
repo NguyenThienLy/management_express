@@ -1,0 +1,15 @@
+extends ../layouts/common
+
+block content
+	h1 
+		span.mr-3 Cart
+
+	each product in products
+		.card(style='width: 16rem; display: inline-block; margin: 0 20px 20px 0;')
+			img.card-img-top(src= product.image)
+			.card-body
+				h5.card-title= product.name
+				p.card-text= product.description
+				span Số lượng:
+				span &nbsp;
+				p.card-text(style="display: inline-block; text-align: right;")= product.quantity

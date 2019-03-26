@@ -1,0 +1,85 @@
+extends ../layouts/common
+
+block content
+	h1 
+		span.mr-3 Products
+
+	.d-flex.align-items-center
+		form.ml-auto(action="/products/search", method="GET", class="d-flex")
+			input(type="text", name="q", class="form-control", value= search)
+			button(class="btn btn-primary ml-2") Search
+	
+	each product in products
+		.card(style='width: 16rem; display: inline-block; margin: 0 20px 20px 0;')
+			img.card-img-top(src= product.image)
+			.card-body
+				h5.card-title= product.name
+				p.card-text= product.description
+				a.btn.btn-primary(href='/cart/add/' + product.id) Add to cart
+
+	nav
+		ul.pagination.justify-content-center
+			if curPage===1
+				li.page-item.disabled
+					a.page-link(href='#', tabindex='-1', aria-disabled='true') Previous
+			else
+				li.page-item
+					a.page-link(href="/products?page=" + (curPage-1), tabindex='-1', aria-disabled='false') Previous
+
+			//- while i < 5
+			//- 	if(curPage === number)
+			//- 		li.page-item.active(aria-current='page')
+			//- 			a.page-link(href='#')= number
+			//- 				span.sr-only (current)
+			//- 	else
+			//- 		li.page-item
+			//- 			a.page-link(href='#')= number
+			//- 	i= i + 1
+			//- 	number= number + 1
+
+			if(curPage === number-2)
+				li.page-item.active(aria-current='page')
+					a.page-link(href='#')= number-2
+						span.sr-only (current)
+			else
+				li.page-item
+					a.page-link(href='#')= number-2
+
+			if(curPage === number-1)
+				li.page-item.active(aria-current='page')
+					a.page-link(href='#')= number-1
+						span.sr-only (current)
+			else
+				li.page-item
+					a.page-link(href='#')= number-1
+
+			if(curPage === number)
+				li.page-item.active(aria-current='page')
+					a.page-link(href='#')= number
+						span.sr-only (current)
+			else
+				li.page-item
+					a.page-link(href='#')= number
+
+			if(curPage === number+1)
+				li.page-item.active(aria-current='page')
+					a.page-link(href='#')= number+1
+						span.sr-only (current)
+			else
+				li.page-item
+					a.page-link(href='#')= number+1
+
+			if(curPage === number+2)
+				li.page-item.active(aria-current='page')
+					a.page-link(href='#')= number+2
+						span.sr-only (current)
+			else
+				li.page-item
+					a.page-link(href='#')= number+2
+			
+			if curPage===lastPage
+				li.page-item.disabled
+					a.page-link(href='#', tabindex='-1', aria-disabled='true') Next
+			else
+				li.page-item
+					a.page-link(href="/products?page=" + (curPage+1)) Next
